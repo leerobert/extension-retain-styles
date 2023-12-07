@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Context
 
-## Available Scripts
+mmm.page uses the TipTap editor, and there are a few bugs I want resolved.
+This will be the beginner task -- very tightly-scoped, and without external dependencies.
+Everything you need should be in this sandbox.
 
-In the project directory, you can run:
+## Issue
 
-### `npm start`
+I want the text editing to work like Google Slides.
+Specifically, for this task, I want a way to "preserve text styles/marks" on empty lines.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Specification
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+_Hit `Reset` button to, well, reset styles._
 
-### `npm test`
+1. **Preserve text marks on empty lines.** Go to end of "Line 2". Click "Size: 48" button to style it. Hit enter once. You should be on a new line, but that new line's blinking cursor is /not/ size 48, so when you type, it jumps. I want the blinking cursor to be size 48.
+2. **Ability to "recover" styles from empty lines.** Go to end of "Line 2". Click "Size: 48" button to style it. Hit enter, then hit enter, and type. You should have four total lines, and the fourth line should be styled. But if you click back to line 3, it will not hold the font-size: 48 styling.
+3. **Keep all styles on select all text and delete.** When you select all text and delete, I want the style of the {first line} to preserve. Right now, after you delete all and type, it will fallback to unstyled text.
+4. **Keep styles on bullet disc.** Turn Line 2 "blue" and "size 48. Now enter new line, type in `*` to create a bullet list. Notice the text is blue and size 48, but the bullet point isn't either. I want the list bullet to be styled.
+5. **Keep styles when exiting list item.** Take the list item from step 4. Hit new line. Notice how it loses style? I want it to retain style.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Ideas
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- I think a lot of these issues would be solved if there were some kind of `StyledBreak` node/extension, which held -- but doesn't render -- the styles (except for maybe `font-size`, so that the cursor is the correct height).

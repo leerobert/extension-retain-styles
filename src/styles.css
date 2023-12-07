@@ -1,0 +1,46 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  font-family: "Inter", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.App {
+  padding: 24px;
+}
+
+.Editor {
+  height: 300px;
+  outline: 0;
+  padding: 16px;
+  border: 1px solid #000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+blockquote,
+pre,
+figure,
+image {
+  margin: 0;
+  font-size: 20px;
+}
+
+.output {
+  font-size: 10px;
+}
